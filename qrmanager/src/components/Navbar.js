@@ -25,7 +25,7 @@ function Navbar() {
           </a>
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
             <a href="/" className="mr-5 hover:text-gray-900">
-              About Us
+              Home
             </a>
             <a href="/facilities" className="mr-5 hover:text-gray-900">
               Generate QR
