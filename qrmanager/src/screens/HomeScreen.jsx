@@ -12,23 +12,6 @@ function HomeScreen() {
     //A function to validate each input values
 
     switch (name) {
-      // case "username":
-      //   if (value.length <= 4) {
-      //     // we will set the error state
-
-      //     setErrors({
-      //       ...errors,
-      //       username: "Username atleast have 5 letters",
-      //     });
-      //   } else {
-      //     // set the error state empty or remove the error for username input
-
-      //     //omit function removes/omits the value from given object and returns a new object
-      //     let newObj = omit(errors, "username");
-      //     setErrors(newObj);
-      //   }
-      //   break;
-
       case "email":
         if (!new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(value)) {
           setErrors({
@@ -39,79 +22,32 @@ function HomeScreen() {
           setErrors(newObj);
         }
         break;
-      case "firstName":
-        if (!new RegExp(/^[a-zA-Z]+(?:(?:|['_. ])([a-zA-Z]*(\.\s)?[a-zA-Z])+)*$/).test(value)) {
-          setErrors({
-            ...errors, firstName: "Enter a valid First name",
-          });
-        } else {
-          let newObj = omit(errors, "firstName");
-          setErrors(newObj);
-        }
-        break;
-      case "lastName":
-        if (!new RegExp(/^[a-zA-Z]+(?:(?:|['_. ])([a-zA-Z]*(\.\s)?[a-zA-Z])+)*$/).test(value)) {
-          setErrors({
-            ...errors, lastName: "Enter a valid Last name",
-          });
-        } else {
-          let newObj = omit(errors, "lastName");
-          setErrors(newObj);
-        }
-        break;
-      case "_id":
-        if (!new RegExp(/^[0-9]*$/).test(value)) {
-          setErrors({
-            ...errors, _id: "Enter a valid RollNumber",
-          });
-        } else {
-          let newObj = omit(errors, "_id");
-          setErrors(newObj);
-        }
-        break;
-      case "City": {
-        if (!new RegExp(/^[a-zA-Z]{1,20}$/).test(value)) {
-          setErrors({
-            ...errors, City: "Enter a valid City Name",
-          });
-        } else {
-          let newObj = omit(errors, "City");
-          setErrors(newObj);
-        }
-        break;
-      }
-      case "Age": {
-        if (!new RegExp(/^[1-9][0-9]{0,2}$/).test(value)) {
-          setErrors({
-            ...errors, Age: "Enter a valid Age",
-          });
-        } else {
-          let newObj = omit(errors, "Age");
-          setErrors(newObj);
-        }
-        break;
-      }
-      case "Pincode": {
-        if (!new RegExp(/^[1-9][0-9]{5}$/).test(value)) {
-          setErrors({
-            ...errors, pincode: "Enter a valid Pincode",
-          });
-        } else {
-          let newObj = omit(errors, "Pincode");
-          setErrors(newObj);
-        }
-        break;
-      }
-      case "ContactNumber":
+      case "phoneNo":
         if (!new RegExp(/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/).test(value)) {
           setErrors({
-            ...errors, ContactNumber: "Enter a valid contact number",
+            ...errors, phoneNo: "Enter a valid contact number",
           });
         } else {
-          let newObj = omit(errors, "ContactNumber");
+          let newObj = omit(errors, "phoneNo");
           setErrors(newObj);
         }
         break;
+      case "password":
+        if (
+          !new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/).test(value)
+        ) {
+          setErrors({
+            ...errors,
+            password:
+              "Password should contain atleast 8 charaters and containing uppercase,lowercase and numbers",
+          });
+        } else {
+          let newObj = omit(errors, "password");
+          setErrors(newObj);
+        }
+        break;
+
+
       case "FatherName": {
         if (!new RegExp(/^[a-zA-Z]+(?:(?:|['_. ])([a-zA-Z]*(\.\s)?[a-zA-Z])+)*$/).test(value)) {
           setErrors({
@@ -167,20 +103,6 @@ function HomeScreen() {
         }
         break;
       }
-      // case "password":
-      //   if (
-      //     !new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/).test(value)
-      //   ) {
-      //     setErrors({
-      //       ...errors,
-      //       password:
-      //         "Password should contain atleast 8 charaters and containing uppercase,lowercase and numbers",
-      //     });
-      //   } else {
-      //     let newObj = omit(errors, "password");
-      //     setErrors(newObj);
-      //   }
-      //   break;
 
       default:
         break;
@@ -189,17 +111,9 @@ function HomeScreen() {
 
   const [input, setInput] = useState({
     email: "",
+    phoneNo: "",
     password: "",
-    firstName: "",
-    lastName: "",
-    _id: "",
-    CurrentAddress: "",
-    City: "",
-    classNames: "1st Class",
-    Pincode: "",
-    Age: "",
-    Gender: "Male",
-    ContactNumber: "",
+
     FatherName: "",
     MotherName: "",
     ResidentialAddress: "",
@@ -210,7 +124,6 @@ function HomeScreen() {
     SchoolAddress: "",
     PoliceStationName: "",
     PoliceStationAddress: "",
-    BloodGroup: "A+",
   });
 
   function handleChangeoption(event) {
@@ -241,16 +154,8 @@ function HomeScreen() {
     setInput({
       email: "",
       password: "",
-      firstName: "",
-      lastName: "",
-      _id: "",
-      CurrentAddress: "",
-      City: "",
-      classNames: "1st Class",
-      Pincode: "",
-      Age: "",
-      Gender: "Male",
-      ContactNumber: "",
+      phoneNo: "",
+
       FatherName: "",
       MotherName: "",
       ResidentialAddress: "",
@@ -261,7 +166,6 @@ function HomeScreen() {
       SchoolAddress: "",
       PoliceStationName: "",
       PoliceStationAddress: "",
-      BloodGroup: "A+",
     });
   }
 
@@ -270,16 +174,8 @@ function HomeScreen() {
     const data = {
       email: input.email,
       password: input.password,
-      firstName: input.firstName,
-      lastName: input.lastName,
-      _id: input._id,
-      CurrentAddress: input.CurrentAddress,
-      City: input.City,
-      classNames: input.classNames,
-      Pincode: input.Pincode,
-      Age: input.Age,
-      Gender: input.Gender,
-      ContactNumber: input.ContactNumber,
+      phoneNo: input.phoneNo,
+
       FatherName: input.FatherName,
       MotherName: input.MotherName,
       ResidentialAddress: input.ResidentialAddress,
@@ -290,7 +186,6 @@ function HomeScreen() {
       SchoolAddress: input.SchoolAddress,
       PoliceStationName: input.PoliceStationName,
       PoliceStationAddress: input.PoliceStationAddress,
-      BloodGroup: input.BloodGroup,
     };
 
     let count = 0;
@@ -356,14 +251,35 @@ function HomeScreen() {
               </div>
               <div className="relative flex-grow w-full">
                 <label
-                  htmlFor="password"
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  htmlFor="grid-zip"
+                >
+                  Phone Number
+                </label>
+                <input
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  id="id-phoneNo"
+                  type="number"
+                  name="phoneNo"
+                  value={input.phoneNo}
+                  onChange={handleChange}
+                />
+                <div>
+                  {errors.ContactNumber && (<div className=" md:w-auto text-red-500">
+                    {errors.ContactNumber}
+                  </div>)}
+                </div>
+              </div>
+              <div className="relative flex-grow w-full">
+                <label
+                  htmlFor="id-password"
                   className="leading-7 text-sm text-gray-600"
                 >
                   Password
                 </label>
                 <input
                   type="password"
-                  id="password"
+                  id="id-password"
                   name="password"
                   value={input.password}
                   onChange={handleChange}
